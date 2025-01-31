@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
-constructor(private router: Router) {}
-navigateToContact() {
-  this.router.navigate(['/contact']);
-}
-}
+export class HomeComponent {}
