@@ -1,0 +1,37 @@
+.hero-section {
+  padding: 100px 0;
+  background-color: #f8f9fa;
+
+  .logo {
+    width: 225px; // Default size for mobile
+    height: auto; // Maintain aspect ratio
+  }
+
+  h1 {
+    font-size: 2rem; // Default size for mobile
+    color: #333;
+    margin: 10px 0;
+  }
+
+  p {
+    color: #666;
+    font-size: 1.25rem;
+  }
+
+  .btn-primary {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+    margin-top: 20px;
+  }
+
+  // Desktop styles
+  @media (min-width: 768px) {
+    .logo {
+      width: 400px; // Larger logo for desktop
+    }
+
+    h1 {
+      font-size: 2.5rem; // Slightly larger headline for desktop
+    }
+  }
+}
