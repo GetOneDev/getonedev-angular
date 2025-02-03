@@ -1,10 +1,10 @@
 <section class="services-section py-5 bg-light">
-  <div class="container">
+  <div class="container" @fadeIn>
     <h2 class="text-center mb-5">Our Services</h2>
     <div class="row">
       <!-- Angular Development -->
       <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
           <div class="card-body">
             <i class="bi bi-code-slash display-4 mb-3"></i>
             <h3 class="card-title">Angular Development</h3>
@@ -15,7 +15,7 @@
 
       <!-- .NET Backend -->
       <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
           <div class="card-body">
             <i class="bi bi-server display-4 mb-3"></i>
             <h3 class="card-title">.NET Backend</h3>
@@ -26,7 +26,7 @@
 
       <!-- Graphic Design -->
       <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
           <div class="card-body">
             <i class="bi bi-palette display-4 mb-3"></i>
             <h3 class="card-title">Graphic Design</h3>
@@ -37,7 +37,7 @@
 
       <!-- SEO -->
       <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
           <div class="card-body">
             <i class="bi bi-search display-4 mb-3"></i>
             <h3 class="card-title">SEO Optimization</h3>
@@ -48,7 +48,7 @@
 
       <!-- Hosting/Domain Management -->
       <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
           <div class="card-body">
             <i class="bi bi-hdd-network display-4 mb-3"></i>
             <h3 class="card-title">Hosting & Domain Management</h3>
@@ -59,7 +59,7 @@
 
       <!-- Azure Cloud Services -->
       <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
           <div class="card-body">
             <i class="bi bi-cloud display-4 mb-3"></i>
             <h3 class="card-title">Azure Cloud Services</h3>

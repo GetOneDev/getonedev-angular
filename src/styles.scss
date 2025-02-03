@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+/* Apply Raleway font globally */
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Optional: Set specific weights for headings */
+h1, h2, h3, h4, h5, h6, a {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600; // Semi-bold
+}
+
+/* Optional: Set specific weights for paragraphs */
+p, button, span, li, ul, ol {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; // Regular
+}
+
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
