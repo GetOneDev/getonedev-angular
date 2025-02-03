@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <!-- Brand/Logo -->
-    <a class="navbar-brand" routerLink="/">GetOneDev, LLC</a>
-    <!-- Hamburger Menu Button (for mobile) -->
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets/small-logo.png" alt="GetOneDev Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+      GetOneDev, LLC
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,23 +15,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navigation Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Home </a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [@linkAnimation]="linkState" (click)="onLinkClick()"> Home </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          <a class="nav-link" routerLink="/services" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/portfolio" routerLinkActive="active">Portfolio</a>
+          <a class="nav-link" routerLink="/portfolio" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">Portfolio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+          <a class="nav-link" routerLink="/about" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">Contact</a>
         </li>
       </ul>
     </div>
@@ -38,3 +38,6 @@
 </nav>
 
 <router-outlet></router-outlet>
+<footer class="text-center py-3 bg-light">
+  <p class="mb-0">&copy; 2025 GetOneDev, LLC. All rights reserved.</p>
+</footer>
