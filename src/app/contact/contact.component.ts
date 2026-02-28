@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ContactEmailService } from './contact-email.service';
 
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   animations: [
@@ -16,7 +18,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class ContactComponent {
+  constructor(private readonly contactEmailService: ContactEmailService) {}
+
   focusState = 'normal';
+  sending = false;
+  submitError = '';
 
   onFocus() {
     this.focusState = 'focused';
@@ -33,9 +39,28 @@ export class ContactComponent {
     message: ''
   };
 
-  onSubmit() {
-    console.log('Form Data:', this.formData);
+  async onSubmit(contactForm: NgForm) {
+    if (contactForm.invalid || this.sending) {
+      return;
+    }
 
-    alert('Thank you for your message! We will get back to you soon.');
+    this.sending = true;
+    this.submitError = '';
+
+    try {
+      await this.contactEmailService.sendInquiry(this.formData);
+      alert('Thank you for your message! We will get back to you soon.');
+      this.formData = {
+        name: '',
+        email: '',
+        inquiryType: '',
+        message: ''
+      };
+      contactForm.resetForm();
+    } catch {
+      this.submitError = 'We could not send your message right now. Please try again in a moment.';
+    } finally {
+      this.sending = false;
+    }
   }
 }

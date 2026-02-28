@@ -3,7 +3,7 @@
     <h2 class="text-center mb-5">Contact Us</h2>
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
           <!-- Name -->
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -74,10 +74,14 @@
 
           <!-- Submit Button -->
           <div class="text-center">
-            <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">
-              Send Message
+            <button type="submit" class="btn btn-primary" [disabled]="sending || !contactForm.form.valid">
+              {{ sending ? 'Sending...' : 'Send Message' }}
             </button>
           </div>
+
+          <p *ngIf="submitError" class="text-danger text-center mt-3 mb-0">
+            {{ submitError }}
+          </p>
         </form>
       </div>
     </div>

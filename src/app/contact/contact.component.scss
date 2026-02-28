@@ -1,4 +1,7 @@
 .contact-section {
+  min-height: calc(100dvh - 120px);
+  display: flex;
+  align-items: center;
   padding: 100px 0;
 
   h2 {
