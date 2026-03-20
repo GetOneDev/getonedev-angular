@@ -2,13 +2,13 @@
   --bg-primary: #0a192f;
   --bg-secondary: #112240;
   --bg-tertiary: #1d3461;
-  --text-heading: #ccd6f6;
-  --text-body: #8892b0;
+  --text-heading: #e6f1ff;
+  --text-body: #a8b2d1;
   --accent: #64ffda;
   --accent-tint: rgba(100, 255, 218, 0.1);
-  --font-primary: 'Raleway', sans-serif;
-  --font-secondary: 'Inter', sans-serif;
-  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --font-primary: 'Share Tech Mono', 'Fira Code', monospace;
+  --font-secondary: 'Orbitron', 'Inter', sans-serif;
+  --font-mono: 'Share Tech Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 }
 
 html {
@@ -30,7 +30,9 @@ h4,
 h5,
 h6 {
   color: var(--text-heading);
+  font-family: var(--font-secondary);
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 a {
@@ -119,31 +121,4 @@ a:hover {
 .fade-in-section.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Ambient background glow */
-body::before {
-  content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    ellipse at 20% 50%,
-    rgba(100, 255, 218, 0.03) 0%,
-    transparent 50%
-  );
-  animation: ambientGlow 15s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes ambientGlow {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(5%, -5%);
-  }
 }

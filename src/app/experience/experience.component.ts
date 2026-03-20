@@ -19,13 +19,16 @@ interface ExperienceEntry {
 export class ExperienceComponent {
   readonly experiences: readonly ExperienceEntry[] = [
     {
-      company: 'Al Rafay Consulting',
-      title: 'Senior DevOps Consultant',
-      dateRange: 'Sep 2025 – Present',
+      company: 'GetOneDev, LLC',
+      title: 'Founder & Full Stack Developer',
+      dateRange: '2023 – Present',
+      url: 'https://getonedev.com',
       points: [
-        'Serving as Senior DevOps Consultant on a contract basis, driving infrastructure modernization and cloud deployment strategies',
-        'Designing and implementing CI/CD pipelines to streamline software delivery and improve release velocity',
-        'Collaborating with engineering teams to adopt DevOps best practices, containerization, and automated testing workflows'
+        'Founded and operate a software development consultancy delivering custom web solutions for small businesses and startups',
+        'Architect and build full-stack applications using Angular, .NET Core, C#, SQL Server, and Azure cloud services',
+        'Design and implement responsive front-end interfaces with modern Angular features including standalone components, signals, and reactive patterns',
+        'Manage end-to-end project delivery including client communication, requirements gathering, UI/UX design, development, deployment, and ongoing maintenance',
+        'Provide SEO optimization, hosting management, and cloud infrastructure services for clients'
       ]
     },
     {
@@ -39,6 +42,16 @@ export class ExperienceComponent {
         'Prepared detailed design specifications and contributed to the full software development lifecycle from requirements through deployment',
         'Collaborate with cross-functional teams to define technical requirements and deliver scalable application features',
         'Lead code reviews and contribute to architectural decisions for modernizing legacy systems'
+      ]
+    },
+    {
+      company: 'Al Rafay Consulting',
+      title: 'Senior DevOps Consultant',
+      dateRange: 'Sep 2025 – Present',
+      points: [
+        'Serving as Senior DevOps Consultant on a contract basis, driving infrastructure modernization and cloud deployment strategies',
+        'Designing and implementing CI/CD pipelines to streamline software delivery and improve release velocity',
+        'Collaborating with engineering teams to adopt DevOps best practices, containerization, and automated testing workflows'
       ]
     },
     {
@@ -71,19 +84,6 @@ export class ExperienceComponent {
         'Worked within an agile team to deliver rapid iterations against feature specifications'
       ]
     },
-    {
-      company: 'GetOneDev, LLC',
-      title: 'Founder & Full Stack Developer',
-      dateRange: '2023 – Present',
-      url: 'https://getonedev.com',
-      points: [
-        'Founded and operate a software development consultancy delivering custom web solutions for small businesses and startups',
-        'Architect and build full-stack applications using Angular, .NET Core, C#, SQL Server, and Azure cloud services',
-        'Design and implement responsive front-end interfaces with modern Angular features including standalone components, signals, and reactive patterns',
-        'Manage end-to-end project delivery including client communication, requirements gathering, UI/UX design, development, deployment, and ongoing maintenance',
-        'Provide SEO optimization, hosting management, and cloud infrastructure services for clients'
-      ]
-    }
   ];
 
   readonly selectedTab = signal(0);

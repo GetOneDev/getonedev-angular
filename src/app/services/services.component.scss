@@ -29,8 +29,9 @@
     margin-bottom: 30px;
 
     .card-folder {
-      color: var(--accent);
+      color: var(--text-heading);
       font-size: 40px;
+      transition: color 0.25s;
     }
   }
 
@@ -42,6 +43,10 @@
   }
 
   &:hover h3 {
+    color: var(--accent);
+  }
+
+  &:hover .card-header .card-folder {
     color: var(--accent);
   }
 

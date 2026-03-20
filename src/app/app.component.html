@@ -1,3 +1,5 @@
+<canvas class="matrix-bg" #matrixCanvas></canvas>
+
 <header class="navbar" [class.scrolled]="false">
   <nav>
     <a class="nav-logo" (click)="scrollTo('hero')">
@@ -44,7 +46,7 @@
 </div>
 
 <div class="social-sidebar right">
-  <a href="mailto:nabeel@getonedev.com">nabeel&#64;getonedev.com</a>
+  <a (click)="scrollTo('contact')" style="cursor: pointer;">nabeel&#64;getonedev.com</a>
 </div>
 
 <footer>
