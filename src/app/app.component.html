@@ -1,9 +1,24 @@
+@if (showIntro()) {
+  <div class="intro-overlay" [class.fading-out]="introFadingOut()">
+    <img
+      class="intro-logo"
+      src="assets/logo - Copy.png"
+      alt="GetOneDev"
+      [class.visible]="logoVisible()"
+    />
+    <div class="intro-progress-bar">
+      <div class="intro-progress-fill" [style.width.%]="introProgress()"></div>
+    </div>
+    <span class="intro-percent">{{ introProgress() }}%</span>
+  </div>
+}
+
 <canvas class="matrix-bg" #matrixCanvas></canvas>
 
 <header class="navbar" [class.scrolled]="false">
   <nav>
     <a class="nav-logo" (click)="scrollTo('hero')">
-      <img src="assets/small-logo.png" alt="GetOneDev" class="nav-logo-img" />
+      <img src="assets/logo - Copy.png" alt="GetOneDev" class="nav-logo-img" />
     </a>
 
     <div class="nav-links" [class.open]="mobileMenuOpen()">
