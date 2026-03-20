@@ -1,89 +1,88 @@
-<section class="contact-section py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-5">Contact Us</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
-          <!-- Name -->
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
+<section class="contact-section">
+  <h2 class="section-heading"><span class="number">05.</span> Get In Touch</h2>
+
+  <div class="contact-content">
+    <h3 class="contact-title">What's Next?</h3>
+    <p class="contact-intro">
+      I'm currently open for freelance opportunities and interesting projects.
+      Whether you have a question, a project idea, or just want to say hello -
+      my inbox is always open. Let's build something great together.
+    </p>
+
+    <div class="contact-form-wrapper">
+      <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
             <input
               type="text"
-              class="form-control"
               id="name"
               name="name"
               [(ngModel)]="formData.name"
               required
-              [@focusEffect]="focusState"
-              (focus)="onFocus()"
-              (blur)="onBlur()"
+              placeholder="Your name"
             />
           </div>
-
-          <!-- Email -->
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+          <div class="form-group">
+            <label for="email">Email</label>
             <input
               type="email"
-              class="form-control"
               id="email"
               name="email"
               [(ngModel)]="formData.email"
               required
-              [@focusEffect]="focusState"
-              (focus)="onFocus()"
-              (blur)="onBlur()"
+              placeholder="your@email.com"
             />
           </div>
+        </div>
 
-          <!-- Inquiry Type -->
-          <div class="mb-3">
-            <label for="inquiryType" class="form-label">Inquiry Type</label>
-            <select
-              class="form-select"
-              id="inquiryType"
-              name="inquiryType"
-              [(ngModel)]="formData.inquiryType"
-              required
-              [@focusEffect]="focusState"
-              (focus)="onFocus()"
-              (blur)="onBlur()"
-            >
-              <option value="" disabled selected>Select an option</option>
-              <option value="general">General Inquiry</option>
-              <option value="project">Project Inquiry</option>
-              <option value="support">Support</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="inquiryType">Inquiry Type</label>
+          <select
+            id="inquiryType"
+            name="inquiryType"
+            [(ngModel)]="formData.inquiryType"
+            required
+          >
+            <option value="" disabled selected>Select an option</option>
+            <option value="general">General Inquiry</option>
+            <option value="project">Project Inquiry</option>
+            <option value="support">Support</option>
+          </select>
+        </div>
 
-          <!-- Message -->
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              name="message"
-              rows="5"
-              [(ngModel)]="formData.message"
-              required
-              [@focusEffect]="focusState"
-              (focus)="onFocus()"
-              (blur)="onBlur()"
-            ></textarea>
-          </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            [(ngModel)]="formData.message"
+            required
+            placeholder="What's on your mind?"
+          ></textarea>
+        </div>
 
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary" [disabled]="sending || !contactForm.form.valid">
-              {{ sending ? 'Sending...' : 'Send Message' }}
-            </button>
-          </div>
+        <button type="submit" class="accent-btn submit-btn" [disabled]="sending || !contactForm.form.valid">
+          {{ sending ? 'Sending...' : 'Send Message' }}
+        </button>
 
-          <p *ngIf="submitError" class="text-danger text-center mt-3 mb-0">
-            {{ submitError }}
-          </p>
-        </form>
-      </div>
+        @if (submitError) {
+          <p class="error-message">{{ submitError }}</p>
+        }
+      </form>
+    </div>
+
+    <div class="social-links">
+      <a href="https://github.com/nsiddiqui25" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/nsiddiqui25/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="mailto:nabeel@getonedev.com" aria-label="Email">
+        <i class="bi bi-envelope"></i>
+      </a>
     </div>
   </div>
 </section>

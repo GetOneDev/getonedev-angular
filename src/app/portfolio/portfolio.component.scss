@@ -1,43 +1,217 @@
-.portfolio-section {
-  min-height: calc(100dvh - 120px);
-  display: flex;
-  align-items: center;
-  padding: 100px 0;
+.projects-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 150px;
+}
 
-  h2 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 50px;
+.featured-projects {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  gap: 10px;
+
+  .project-image {
+    grid-column: 1 / 8;
+    grid-row: 1;
+
+    .image-wrapper {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--accent-tint);
+      aspect-ratio: 16 / 10;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--bg-primary);
+        opacity: 0.6;
+        z-index: 1;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover::before {
+        opacity: 0;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
   }
 
-  .card {
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+  .project-content {
+    grid-column: 7 / -1;
+    grid-row: 1;
+    text-align: right;
+    z-index: 2;
+    position: relative;
+  }
 
-    &:hover {
-      transform: translateY(-10px);
+  .project-overline {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  .project-title {
+    margin: 0 0 20px;
+    font-size: 28px;
+    color: var(--text-heading);
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.25s;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  .project-description {
+    background: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    margin-bottom: 20px;
+
+    p {
+      color: var(--text-body);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+
+    li {
+      color: var(--text-body);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+  }
+
+  .project-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+
+    a {
+      color: var(--text-heading);
+      font-size: 20px;
+      transition: color 0.25s;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  // Reversed layout (even-indexed projects)
+  &.reverse {
+    .project-image {
+      grid-column: 6 / -1;
     }
 
-    .card-img-top {
-      height: 200px;
-      object-fit: cover;
+    .project-content {
+      grid-column: 1 / 7;
+      text-align: left;
     }
 
-    .card-title {
-      font-size: 1.5rem;
-      color: #333;
-      margin: 15px 0;
+    .project-tech {
+      justify-content: flex-start;
     }
 
-    .card-text {
-      color: #666;
-      font-size: 1rem;
+    .project-links {
+      justify-content: flex-start;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1080px) {
+  .projects-section {
+    padding: 80px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 60px 25px;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+
+    .project-image {
+      .image-wrapper::before {
+        opacity: 0.85;
+      }
+      .image-wrapper {
+        aspect-ratio: 16 / 9;
+      }
     }
 
-    .btn-primary {
-      background-color: #1a73e8;
-      border-color: #1a73e8;
+    .project-content {
+      padding: 25px;
+      text-align: left;
     }
+
+    .project-description {
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+      margin-bottom: 15px;
+    }
+
+    .project-tech {
+      justify-content: flex-start;
+    }
+
+    .project-links {
+      justify-content: flex-start;
+    }
+
+    &.reverse {
+      .project-content {
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 60px 15px;
   }
 }

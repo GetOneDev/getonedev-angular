@@ -1,31 +1,149 @@
-/* Apply Raleway font globally */
+:root {
+  --bg-primary: #0a192f;
+  --bg-secondary: #112240;
+  --bg-tertiary: #1d3461;
+  --text-heading: #ccd6f6;
+  --text-body: #8892b0;
+  --accent: #64ffda;
+  --accent-tint: rgba(100, 255, 218, 0.1);
+  --font-primary: 'Raleway', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+}
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  background: var(--bg-primary);
+  color: var(--text-body);
+  font-family: var(--font-primary);
   height: 100%;
   margin: 0;
 }
 
-body {
-  font-family: 'Raleway', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-heading);
+  font-weight: 600;
 }
 
-/* Optional: Set specific weights for headings */
-h1, h2, h3, h4, h5, h6, a {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600; // Semi-bold
+a {
+  color: var(--accent);
+  text-decoration: none;
 }
 
-/* Optional: Set specific weights for paragraphs */
-p, button, span, li, ul, ol {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400; // Regular
+a:hover {
+  text-decoration: underline;
 }
 
-footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
-  padding: 20px 0;
-  font-size: 0.9rem;
-  color: #666;
+::selection {
+  background: var(--accent-tint);
+  color: var(--accent);
+}
+
+.section-heading {
+  align-items: center;
+  color: var(--text-heading);
+  display: flex;
+  font-size: 26px;
+  font-weight: 600;
+  gap: 12px;
+  margin: 0 0 28px;
+  width: 100%;
+}
+
+.section-heading .number {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.section-heading::after {
+  border-top: 1px solid var(--bg-tertiary);
+  content: '';
+  flex: 1;
+  margin-left: 16px;
+}
+
+.accent-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 12px 24px;
+  transition: all 0.25s ease;
+}
+
+.accent-btn:hover {
+  background: var(--accent-tint);
+}
+
+.numbered-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.numbered-list li {
+  margin: 0 0 10px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.numbered-list li::before {
+  color: var(--accent);
+  content: '\25b9';
+  font-family: var(--font-mono);
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+/* Scroll fade-in animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ambient background glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at 20% 50%,
+    rgba(100, 255, 218, 0.03) 0%,
+    transparent 50%
+  );
+  animation: ambientGlow 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ambientGlow {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(5%, -5%);
+  }
 }

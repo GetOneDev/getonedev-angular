@@ -1,72 +1,53 @@
-<section class="services-section py-5 bg-light">
-  <div class="container" @fadeIn>
-    <h2 class="text-center mb-5">Our Services</h2>
-    <div class="row">
-      <!-- Angular Development -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-          <div class="card-body">
-            <i class="bi bi-code-slash display-4 mb-3"></i>
-            <h3 class="card-title">Angular Development</h3>
-            <p class="card-text">We build fast, responsive, and modern web applications using Angular.</p>
-          </div>
-        </div>
-      </div>
+<section class="services-section">
+  <h2 class="section-heading"><span class="number">04.</span> What I Offer</h2>
 
-      <!-- .NET Backend -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-          <div class="card-body">
-            <i class="bi bi-server display-4 mb-3"></i>
-            <h3 class="card-title">.NET Backend</h3>
-            <p class="card-text">Scalable and secure backend solutions built with .NET Core and SQL.</p>
-          </div>
-        </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="card-header">
+        <i class="bi bi-code-square card-folder"></i>
       </div>
+      <h3>Angular Development</h3>
+      <p>I build fast, responsive, and modern web applications using Angular with standalone components, signals, and the latest framework features.</p>
+    </div>
 
-      <!-- Graphic Design -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-          <div class="card-body">
-            <i class="bi bi-palette display-4 mb-3"></i>
-            <h3 class="card-title">Graphic Design</h3>
-            <p class="card-text">Custom logos, branding, and UI/UX designs tailored to your business.</p>
-          </div>
-        </div>
+    <div class="service-card">
+      <div class="card-header">
+        <i class="bi bi-hdd-stack card-folder"></i>
       </div>
+      <h3>.NET Backend</h3>
+      <p>I architect scalable and secure backend solutions with .NET Core, C#, Web APIs, and SQL Server for robust data-driven applications.</p>
+    </div>
 
-      <!-- SEO -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-          <div class="card-body">
-            <i class="bi bi-search display-4 mb-3"></i>
-            <h3 class="card-title">SEO Optimization</h3>
-            <p class="card-text">Boost your search engine rankings with our data-driven SEO strategies.</p>
-          </div>
-        </div>
+    <div class="service-card">
+      <div class="card-header">
+        <i class="bi bi-vector-pen card-folder"></i>
       </div>
+      <h3>UI/UX Design</h3>
+      <p>I create custom logos, branding, and user interface designs tailored to your business with a focus on usability and visual appeal.</p>
+    </div>
 
-      <!-- Hosting/Domain Management -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-          <div class="card-body">
-            <i class="bi bi-hdd-network display-4 mb-3"></i>
-            <h3 class="card-title">Hosting & Domain Management</h3>
-            <p class="card-text">Full-service hosting solutions with 24/7 monitoring and support.</p>
-          </div>
-        </div>
+    <div class="service-card">
+      <div class="card-header">
+        <i class="bi bi-globe card-folder"></i>
       </div>
+      <h3>SEO, Hosting &amp; Domains</h3>
+      <p>I boost search engine rankings with data-driven SEO strategies, manage hosting infrastructure with 24/7 monitoring, and handle domain configuration and SSL certificates.</p>
+    </div>
 
-      <!-- Azure Cloud Services -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center" [@hoverEffect]="hoverState" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-          <div class="card-body">
-            <i class="bi bi-cloud display-4 mb-3"></i>
-            <h3 class="card-title">Azure Cloud Services</h3>
-            <p class="card-text">Cloud infrastructure setup, migration, and management on Microsoft Azure.</p>
-          </div>
-        </div>
+    <div class="service-card">
+      <div class="card-header">
+        <i class="bi bi-chat-dots card-folder"></i>
       </div>
+      <h3>AI &amp; Chatbot Development</h3>
+      <p>I design and develop intelligent chatbots and AI-powered features using modern language models, conversational interfaces, and automation workflows.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="card-header">
+        <i class="bi bi-cloud card-folder"></i>
+      </div>
+      <h3>Azure Cloud</h3>
+      <p>I set up, migrate, and manage cloud infrastructure on Microsoft Azure — from app services and databases to CI/CD pipelines.</p>
     </div>
   </div>
 </section>

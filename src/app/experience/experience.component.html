@@ -1,0 +1,57 @@
+<section id="experience" class="experience-section">
+  <h2 class="section-heading"><span class="number">02.</span> Where I've Worked</h2>
+
+  <div class="experience-layout">
+    <div class="tab-list" role="tablist" aria-label="Experience companies">
+      @for (entry of experiences; track entry.company; let i = $index) {
+        <button
+          type="button"
+          class="tab-button"
+          role="tab"
+          [class.active]="selectedTab() === i"
+          [attr.aria-selected]="selectedTab() === i"
+          [attr.aria-controls]="'experience-panel-' + i"
+          [id]="'experience-tab-' + i"
+          (click)="selectTab(i)"
+        >
+          {{ entry.company }}
+        </button>
+      }
+    </div>
+
+    @if (experiences[selectedTab()]; as selectedExperience) {
+      <div
+        class="experience-panel"
+        role="tabpanel"
+        [id]="'experience-panel-' + selectedTab()"
+        [attr.aria-labelledby]="'experience-tab-' + selectedTab()"
+      >
+        <h3 class="experience-title">
+          {{ selectedExperience.title }}
+          <span class="company-wrapper">
+            @if (selectedExperience.url) {
+              <a
+                class="company-link"
+                [href]="selectedExperience.url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                &#64; {{ selectedExperience.company }}
+              </a>
+            } @else {
+              <span class="company-link">&#64; {{ selectedExperience.company }}</span>
+            }
+          </span>
+        </h3>
+
+        <p class="date-range">{{ selectedExperience.dateRange }}</p>
+
+        <ul class="experience-points">
+          @for (point of selectedExperience.points; track point) {
+            <li>{{ point }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</section>
