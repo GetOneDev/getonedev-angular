@@ -28,12 +28,18 @@ export class AppComponent implements OnDestroy {
 
   mobileMenuOpen = signal(false);
   activeSection = signal('');
+  showIntro = signal(true);
+  introFadingOut = signal(false);
+  introProgress = signal(0);
+  logoVisible = signal(false);
 
   private animationId = 0;
   private resizeHandler = () => this.resizeCanvas();
+  private introTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     afterNextRender(() => {
+      this.runIntroAnimation();
       this.setupScrollSpy();
       this.initMatrixRain();
       window.addEventListener('resize', this.resizeHandler);
@@ -43,6 +49,7 @@ export class AppComponent implements OnDestroy {
   ngOnDestroy() {
     cancelAnimationFrame(this.animationId);
     window.removeEventListener('resize', this.resizeHandler);
+    if (this.introTimer) clearTimeout(this.introTimer);
   }
 
   scrollTo(sectionId: string) {
@@ -52,6 +59,40 @@ export class AppComponent implements OnDestroy {
 
   toggleMobileMenu() {
     this.mobileMenuOpen.update((current) => !current);
+  }
+
+  private runIntroAnimation() {
+    // Total animation: ~2000ms fill, then 400ms fade out
+    const duration = 2000;
+    const start = performance.now();
+
+    // Logo fades in at 20% progress, fades out at 80%
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      this.introProgress.set(Math.round(progress * 100));
+
+      // Logo visibility: fade in at 20%, fade out at 80%
+      if (progress >= 0.2 && progress < 0.8) {
+        this.logoVisible.set(true);
+      } else if (progress >= 0.8) {
+        this.logoVisible.set(false);
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        // Hold briefly then fade out overlay
+        this.introTimer = setTimeout(() => {
+          this.introFadingOut.set(true);
+          this.introTimer = setTimeout(() => {
+            this.showIntro.set(false);
+          }, 600);
+        }, 200);
+      }
+    };
+
+    requestAnimationFrame(tick);
   }
 
   private setupScrollSpy() {
@@ -102,7 +143,7 @@ export class AppComponent implements OnDestroy {
     (this as any)._reinitDrops = initDrops;
 
     let lastTime = 0;
-    const frameInterval = 80; // ms between frames
+    const frameInterval = 80;
 
     const draw = (timestamp: number) => {
       this.animationId = requestAnimationFrame(draw);
@@ -110,7 +151,6 @@ export class AppComponent implements OnDestroy {
       if (timestamp - lastTime < frameInterval) return;
       lastTime = timestamp;
 
-      // Semi-transparent black to create fade/trail effect
       ctx.fillStyle = 'rgba(10, 25, 47, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -123,7 +163,6 @@ export class AppComponent implements OnDestroy {
           const x = i * fontSize;
           const y = drops[i] * fontSize;
 
-          // Head character - bright teal
           ctx.fillStyle = '#64ffda';
           ctx.globalAlpha = 0.9;
           ctx.fillText(char, x, y);
@@ -133,9 +172,6 @@ export class AppComponent implements OnDestroy {
 
         const y = drops[i] * fontSize;
 
-        // Trail characters fade out - drawn by the background overlay naturally
-
-        // Reset drop to top randomly after it passes the screen
         if (y > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
