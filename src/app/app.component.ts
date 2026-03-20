@@ -82,6 +82,7 @@ export class AppComponent implements OnDestroy {
     let columns: number;
     let drops: number[];
     let speeds: number[];
+    let lastRows: number[];
 
     const initDrops = () => {
       canvas.width = window.innerWidth;
@@ -94,6 +95,7 @@ export class AppComponent implements OnDestroy {
         if (r < 0.35) return 2;
         return 1;
       });
+      lastRows = Array.from({ length: columns }, () => -1);
     };
 
     initDrops();
@@ -115,14 +117,21 @@ export class AppComponent implements OnDestroy {
       ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
-        const char = chars[Math.floor(Math.random() * chars.length)];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
+        const currentRow = Math.floor(drops[i]);
+        if (currentRow !== lastRows[i]) {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          const x = i * fontSize;
+          const y = drops[i] * fontSize;
 
-        // Head character - bright teal
-        ctx.fillStyle = '#64ffda';
-        ctx.globalAlpha = 0.9;
-        ctx.fillText(char, x, y);
+          // Head character - bright teal
+          ctx.fillStyle = '#64ffda';
+          ctx.globalAlpha = 0.9;
+          ctx.fillText(char, x, y);
+
+          lastRows[i] = currentRow;
+        }
+
+        const y = drops[i] * fontSize;
 
         // Trail characters fade out - drawn by the background overlay naturally
 
