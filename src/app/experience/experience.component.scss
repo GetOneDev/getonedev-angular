@@ -1,0 +1,145 @@
+.experience-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 100px 150px;
+}
+
+.experience-layout {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-button {
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--bg-tertiary);
+  color: var(--text-body);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.tab-button:hover {
+  background: var(--accent-tint);
+  color: var(--accent);
+}
+
+.tab-button.active {
+  border-left-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.experience-panel {
+  min-height: 340px;
+}
+
+.experience-title {
+  color: var(--text-heading);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.company-wrapper {
+  margin-left: 0.2rem;
+}
+
+.company-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a.company-link:hover,
+a.company-link:focus-visible {
+  text-decoration: underline;
+}
+
+.date-range {
+  color: var(--text-body);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.experience-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.experience-points li {
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.experience-points li::before {
+  color: var(--accent);
+  content: '▹';
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+@media (max-width: 767.98px) {
+  .experience-section {
+    padding: 60px 50px;
+  }
+
+  .experience-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tab-list {
+    border-bottom: 2px solid var(--bg-tertiary);
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .tab-button {
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+    flex: 0 0 auto;
+  }
+
+  .tab-button.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--accent);
+  }
+}
+
+@media (max-width: 1080px) {
+  .experience-section {
+    padding: 80px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  // In addition to existing rules for 767.98px
+}
+
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 60px 15px;
+  }
+}

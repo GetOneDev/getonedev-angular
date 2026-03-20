@@ -1,40 +1,98 @@
-.hero-section {
-  min-height: calc(100dvh - 120px);
+.hero {
   display: flex;
   align-items: center;
-  padding: 100px 0;
-  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 0 150px;
+  padding-top: 70px;
+  position: relative;
 
-  .logo {
-    width: 225px; // Default size for mobile
-    height: auto; // Maintain aspect ratio
+  .hero-content {
+    max-width: 1000px;
+    position: relative;
+    z-index: 2;
   }
 
-  h1 {
-    font-size: 2rem; // Default size for mobile
-    color: #333;
-    margin: 10px 0;
+  .hero-intro {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 400;
   }
 
-  p {
-    color: #666;
-    font-size: 1.25rem;
+  .hero-name {
+    color: var(--text-heading);
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 10px;
   }
 
-  .btn-primary {
-    background-color: #1a73e8;
-    border-color: #1a73e8;
-    margin-top: 20px;
+  .hero-tagline {
+    color: var(--text-body);
+    font-size: clamp(24px, 4vw, 50px);
+    font-weight: 600;
+    line-height: 1.1;
+    margin: 0 0 20px;
   }
 
-  // Desktop styles
-  @media (min-width: 768px) {
-    .logo {
-      width: 400px; // Larger logo for desktop
+  .hero-description {
+    color: var(--text-body);
+    font-size: 18px;
+    max-width: 540px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
 
-    h1 {
-      font-size: 2.5rem; // Slightly larger headline for desktop
+  .hero-cta {
+    .accent-btn {
+      font-size: 14px;
+      padding: 18px 28px;
+      text-decoration: none;
+      display: inline-block;
     }
+  }
+}
+
+// Staggered fade-in animation delays
+.hero-intro { animation-delay: 100ms; }
+.hero-name { animation-delay: 200ms; }
+.hero-tagline { animation-delay: 300ms; }
+.hero-description { animation-delay: 400ms; }
+.hero-cta { animation-delay: 500ms; }
+
+@media (max-width: 1080px) {
+  .hero {
+    padding: 0 100px;
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 25px;
+    padding-top: 70px;
+  }
+
+  .hero-intro {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 15px;
+    padding-top: 70px;
+  }
+  .hero-intro {
+    font-size: 14px;
   }
 }

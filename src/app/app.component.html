@@ -1,45 +1,60 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">
-      <img src="assets/small-logo.png" alt="GetOneDev Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
-      GetOneDev, LLC
+<canvas class="matrix-bg" #matrixCanvas></canvas>
+
+<header class="navbar" [class.scrolled]="false">
+  <nav>
+    <a class="nav-logo" (click)="scrollTo('hero')">
+      <img src="assets/small-logo.png" alt="GetOneDev" class="nav-logo-img" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [@linkAnimation]="linkState" (click)="onLinkClick()"> Home </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/services" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/portfolio" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">Portfolio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/about" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active" [@linkAnimation]="linkState" (click)="onLinkClick()">Contact</a>
-        </li>
-      </ul>
+    <div class="nav-links" [class.open]="mobileMenuOpen()">
+      <ol>
+        <li><a (click)="scrollTo('about')" [class.active]="activeSection() === 'about'">About</a></li>
+        <li><a (click)="scrollTo('experience')" [class.active]="activeSection() === 'experience'">Experience</a></li>
+        <li><a (click)="scrollTo('work')" [class.active]="activeSection() === 'work'">Work</a></li>
+        <li><a (click)="scrollTo('services')" [class.active]="activeSection() === 'services'">Services</a></li>
+        <li><a (click)="scrollTo('contact')" [class.active]="activeSection() === 'contact'">Contact</a></li>
+      </ol>
+      <a class="accent-btn nav-resume-btn" href="mailto:nabeel@getonedev.com">Say Hello</a>
     </div>
-  </div>
-</nav>
 
-<main class="app-content">
-  <router-outlet></router-outlet>
+    <button class="hamburger" (click)="toggleMobileMenu()" [attr.aria-label]="'Toggle menu'" [class.active]="mobileMenuOpen()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+@if (mobileMenuOpen()) {
+  <div class="mobile-backdrop" (click)="toggleMobileMenu()"></div>
+}
+
+<main>
+  <app-home id="hero"></app-home>
+  <app-about id="about" appFadeIn></app-about>
+  <app-experience id="experience" appFadeIn></app-experience>
+  <app-portfolio id="work" appFadeIn></app-portfolio>
+  <app-services id="services" appFadeIn></app-services>
+  <app-contact id="contact" appFadeIn></app-contact>
 </main>
-<footer class="text-center py-3 bg-light">
-  <p class="mb-0">&copy; 2025 GetOneDev, LLC. All rights reserved.</p>
+
+<div class="social-sidebar left">
+  <ul>
+    <li><a href="https://github.com/nsiddiqui25" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/nsiddiqui25/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+  </ul>
+</div>
+
+<div class="social-sidebar right">
+  <a (click)="scrollTo('contact')" style="cursor: pointer;">nabeel&#64;getonedev.com</a>
+</div>
+
+<footer>
+  <div class="footer-social">
+    <a href="https://github.com/nsiddiqui25" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/nsiddiqui25/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="mailto:nabeel@getonedev.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+  </div>
+  <p>Designed &amp; Built by Nabeel Siddiqui</p>
+  <p class="copyright">&copy; 2025 GetOneDev, LLC</p>
 </footer>
