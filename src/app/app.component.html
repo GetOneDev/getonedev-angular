@@ -22,6 +22,7 @@
     </a>
 
     <div class="nav-links" [class.open]="mobileMenuOpen()">
+      <button class="mobile-close" (click)="toggleMobileMenu()" aria-label="Close menu">&times;</button>
       <ol>
         <li><a (click)="scrollTo('about')" [class.active]="activeSection() === 'about'">About</a></li>
         <li><a (click)="scrollTo('experience')" [class.active]="activeSection() === 'experience'">Experience</a></li>

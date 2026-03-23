@@ -110,21 +110,26 @@ a.company-link:focus-visible {
   }
 
   .tab-list {
-    border-bottom: 2px solid var(--bg-tertiary);
-    flex-direction: row;
-    overflow-x: auto;
-    scrollbar-width: thin;
+    width: 100%;
+    border-bottom: 0;
+    flex-direction: column;
   }
 
   .tab-button {
-    border-left: 0;
-    border-bottom: 2px solid transparent;
-    flex: 0 0 auto;
+    width: 100%;
+    max-width: none;
+    border-left: 2px solid var(--bg-tertiary);
+    border-bottom: 0;
+    flex: 1 1 auto;
   }
 
   .tab-button.active {
-    border-left-color: transparent;
-    border-bottom-color: var(--accent);
+    border-left-color: var(--accent);
+    border-bottom-color: transparent;
+  }
+
+  .experience-panel {
+    min-height: auto;
   }
 }
 
