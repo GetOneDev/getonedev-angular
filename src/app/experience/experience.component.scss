@@ -110,21 +110,30 @@ a.company-link:focus-visible {
   }
 
   .tab-list {
-    border-bottom: 2px solid var(--bg-tertiary);
-    flex-direction: row;
-    overflow-x: auto;
-    scrollbar-width: thin;
+    border-bottom: 0;
+    border-left: 2px solid var(--bg-tertiary);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: visible;
+    overflow-y: visible;
+    width: 100%;
   }
 
   .tab-button {
-    border-left: 0;
-    border-bottom: 2px solid transparent;
-    flex: 0 0 auto;
+    border-left: 2px solid transparent;
+    border-bottom: 0;
+    width: min(100%, 320px);
+    max-width: 100%;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 
   .tab-button.active {
-    border-left-color: transparent;
-    border-bottom-color: var(--accent);
+    border-bottom-color: transparent;
+    border-left-color: var(--accent);
   }
 }
 
@@ -144,31 +153,3 @@ a.company-link:focus-visible {
   }
 }
 
-@media (max-width: 430px) {
-  .tab-list {
-    border-bottom: 0;
-    border-left: 2px solid var(--bg-tertiary);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow-x: visible;
-    overflow-y: visible;
-    width: 100%;
-  }
-
-  .tab-button {
-    border-bottom: 0;
-    border-left: 2px solid transparent;
-    width: min(100%, 320px);
-    max-width: 100%;
-    text-align: center;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-  }
-
-  .tab-button.active {
-    border-bottom-color: transparent;
-    border-left-color: var(--accent);
-  }
-}
