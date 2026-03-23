@@ -122,3 +122,10 @@ a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (max-width: 430px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}

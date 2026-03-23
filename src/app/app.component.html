@@ -60,9 +60,11 @@
   </ul>
 </div>
 
-<div class="social-sidebar right">
-  <a (click)="scrollTo('contact')" style="cursor: pointer;">nabeel&#64;getonedev.com</a>
-</div>
+@if (isDesktopWide()) {
+  <div class="social-sidebar right">
+    <a (click)="scrollTo('contact')" style="cursor: pointer;">nabeel&#64;getonedev.com</a>
+  </div>
+}
 
 <footer>
   <div class="footer-social">
