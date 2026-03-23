@@ -28,6 +28,7 @@ export class AppComponent implements OnDestroy {
 
   mobileMenuOpen = signal(false);
   activeSection = signal('');
+  isDesktopWide = signal(window.innerWidth > 1080);
   showIntro = signal(true);
   introFadingOut = signal(false);
   introProgress = signal(0);
@@ -42,6 +43,7 @@ export class AppComponent implements OnDestroy {
       this.runIntroAnimation();
       this.setupScrollSpy();
       this.initMatrixRain();
+      this.updateViewportFlags();
       window.addEventListener('resize', this.resizeHandler);
     });
   }
@@ -188,5 +190,10 @@ export class AppComponent implements OnDestroy {
   private resizeCanvas() {
     const reinit = (this as any)._reinitDrops;
     if (reinit) reinit();
+    this.updateViewportFlags();
+  }
+
+  private updateViewportFlags() {
+    this.isDesktopWide.set(window.innerWidth > 1080);
   }
 }

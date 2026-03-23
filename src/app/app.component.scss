@@ -348,12 +348,6 @@ footer {
 	.social-sidebar {
 		display: none;
 	}
-
-	footer {
-		.footer-social {
-			display: flex;
-		}
-	}
 }
 
 @media (max-width: 1080px) {
@@ -362,7 +356,7 @@ footer {
 	}
 
 	footer .footer-social {
-		display: flex;
+		display: none;
 	}
 }
 
