@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ServicesComponent } from './services/services.component';
 import { FadeInDirective } from './shared/fade-in.directive';
+import { SeoService } from './shared/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +39,8 @@ export class AppComponent implements OnDestroy {
   private resizeHandler = () => this.resizeCanvas();
   private introTimer: ReturnType<typeof setTimeout> | null = null;
 
-  constructor() {
+  constructor(private seoService: SeoService) {
+    this.injectStructuredData();
     afterNextRender(() => {
       this.runIntroAnimation();
       this.setupScrollSpy();
@@ -46,6 +48,39 @@ export class AppComponent implements OnDestroy {
       this.updateViewportFlags();
       window.addEventListener('resize', this.resizeHandler);
     });
+  }
+
+  private injectStructuredData(): void {
+    const schemas = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Nabeel Siddiqui',
+        jobTitle: 'Full Stack Developer',
+        url: 'https://getonedev.com/',
+        email: 'nabeel@getonedev.com',
+        sameAs: [
+          'https://github.com/nsiddiqui25',
+          'https://www.linkedin.com/in/nsiddiqui25/'
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'GetOneDev, LLC',
+        url: 'https://getonedev.com/',
+        founder: {
+          '@type': 'Person',
+          name: 'Nabeel Siddiqui'
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          email: 'nabeel@getonedev.com',
+          contactType: 'customer service'
+        }
+      }
+    ];
+    this.seoService.injectJsonLd(schemas);
   }
 
   ngOnDestroy() {
