@@ -23,11 +23,11 @@
 
     <div class="nav-links" [class.open]="mobileMenuOpen()">
       <ol>
-        <li><a (click)="scrollTo('about')" [class.active]="activeSection() === 'about'">About</a></li>
-        <li><a (click)="scrollTo('experience')" [class.active]="activeSection() === 'experience'">Experience</a></li>
-        <li><a (click)="scrollTo('work')" [class.active]="activeSection() === 'work'">Work</a></li>
-        <li><a (click)="scrollTo('services')" [class.active]="activeSection() === 'services'">Services</a></li>
-        <li><a (click)="scrollTo('contact')" [class.active]="activeSection() === 'contact'">Contact</a></li>
+        <li><a (click)="scrollTo('about')" [class.active]="activeSection() === 'about'" aria-label="Navigate to About section">About</a></li>
+        <li><a (click)="scrollTo('experience')" [class.active]="activeSection() === 'experience'" aria-label="Navigate to Experience section">Experience</a></li>
+        <li><a (click)="scrollTo('work')" [class.active]="activeSection() === 'work'" aria-label="Navigate to Work section">Work</a></li>
+        <li><a (click)="scrollTo('services')" [class.active]="activeSection() === 'services'" aria-label="Navigate to Services section">Services</a></li>
+        <li><a (click)="scrollTo('contact')" [class.active]="activeSection() === 'contact'" aria-label="Navigate to Contact section">Contact</a></li>
       </ol>
       <a class="accent-btn nav-resume-btn" href="mailto:nabeel@getonedev.com">Say Hello</a>
     </div>
